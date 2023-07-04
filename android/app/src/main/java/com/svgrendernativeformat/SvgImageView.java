@@ -30,6 +30,6 @@ public class SvgImageView extends FrameLayout {
     }
 
     public void setImageUri(String uri) {
-        
+
     }
 }
