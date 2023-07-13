@@ -7,6 +7,7 @@
 
 import React from 'react';
 import {
+  Image,
   requireNativeComponent,
   SafeAreaView, StatusBar, StyleProp, Text, useColorScheme, ViewStyle
 } from 'react-native';
@@ -20,7 +21,7 @@ type SvgImageViewProps = {
   style?: StyleProp<ViewStyle>;
 }
 
-const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImage');
+const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImage'); 
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -36,10 +37,17 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <Text>SVG Render on Native Side</Text>
-      <SvgImageView imageUri='test.svg'  style={{
+      <SvgImageView imageUri={Image.resolveAssetSource(require('./test-svg-2.svg')).uri} style={{
         width: 100,
         height: 100,
-        backgroundColor: 'red',
+      }} />
+      <SvgImageView imageUri={Image.resolveAssetSource(require('./test-svg.svg')).uri} style={{
+        width: 100,
+        height: 100,
+      }} />
+      <SvgImageView imageUri={Image.resolveAssetSource(require('./test-tube.svg')).uri} style={{
+        width: 100,
+        height: 100,
       }} />
     </SafeAreaView>
   );
