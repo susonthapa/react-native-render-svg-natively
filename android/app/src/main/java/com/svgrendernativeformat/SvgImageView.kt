@@ -29,7 +29,7 @@ class SvgImageView @JvmOverloads constructor(
         addView(imageView)
     }
 
-    fun setImage(path: String?, width: Int, height: Int) {
+    fun setImage(path: String, width: Int, height: Int) {
         val target = object : CustomTarget<Bitmap>(width, height) {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                 imageView!!.setImageBitmap(resource)
@@ -37,15 +37,19 @@ class SvgImageView @JvmOverloads constructor(
 
             override fun onLoadCleared(placeholder: Drawable?) {}
         }
-        val source = ImageSource(context, path)
-        val uri = Uri.parse(
-            source.uri.toString()
-                .replace("res:/", "android.resource" + "://" + context.packageName + "/")
-        )
-        GlideApp.with(context)
-            .`as`(Bitmap::class.java)
-            .load(uri)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(target)
+        if (path.contains("http")) {
+            GlideApp.with(context)
+                .`as`(Bitmap::class.java)
+                .load(Uri.parse(path))
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(target)
+        } else {
+            val id = context.resources.getIdentifier(path, "raw", context.packageName)
+            GlideApp.with(context)
+                .`as`(Bitmap::class.java)
+                .load(id)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(target)
+        }
     }
 }
