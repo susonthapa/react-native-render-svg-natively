@@ -29,8 +29,8 @@ class SvgImageView @JvmOverloads constructor(
         addView(imageView)
     }
 
-    fun setImageUri(path: String?) {
-        val target = object : CustomTarget<Bitmap>(1200, 1200) {
+    fun setImage(path: String?, width: Int, height: Int) {
+        val target = object : CustomTarget<Bitmap>(width, height) {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                 imageView!!.setImageBitmap(resource)
             }

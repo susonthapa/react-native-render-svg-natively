@@ -1,5 +1,6 @@
 package com.svgrendernativeformat
 
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
@@ -13,8 +14,11 @@ class SvgImageViewManager : SimpleViewManager<SvgImageView>() {
         return SvgImageView(themedReactContext)
     }
 
-    @ReactProp(name = "imageUri")
-    fun setImageUri(view: SvgImageView, uri: String?) {
-        view.setImageUri(uri)
+    @ReactProp(name = "param")
+    fun setImageParam(view: SvgImageView, props: ReadableMap) {
+        val uri = props.getString("uri")!!
+        val width = props.getInt("width")
+        val height = props.getInt("height")
+        view.setImage(uri, width, height)
     }
 }
