@@ -27,6 +27,7 @@ target 'SVGRenderNativeFormat' do
   # Flags change depending on the env values.
   flags = get_default_flags()
   pod 'SDWebImageSVGNativeCoder'
+  pod 'SVGKit', :git => 'https://github.com/troZee/SVGKit.git', :branch => '3.x'
 
   use_react_native!(
     :path => config[:reactNativePath],

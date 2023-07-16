@@ -31,11 +31,15 @@ class SVGImageView: UIView {
   
   @objc var imageUri: String = "" {
     didSet {
-      SDWebImageManager.shared.loadImage(with: URL(string: imageUri), options: [], context: [.imageThumbnailPixelSize: CGSize(width: 100, height: 100)], progress: nil) { (image, _, _, _, _, _) in
-        if let image = image {
-          self.imageView.image = image
-        }
-      }
+      let svgImage = SVGKImage(contentsOf: URL(string: imageUri))
+      imageView.image = svgImage?.uiImage
+      imageView.contentMode = .scaleAspectFit
+      
+//      SDWebImageManager.shared.loadImage(with: URL(string: imageUri), options: [], context: [.imageThumbnailPixelSize: CGSize(width: 100, height: 100)], progress: nil) { (image, _, _, _, _, _) in
+//        if let image = image {
+//          self.imageView.image = image
+//        }
+//      }
     }
   }
 }

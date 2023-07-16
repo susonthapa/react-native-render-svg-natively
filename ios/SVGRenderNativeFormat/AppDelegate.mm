@@ -1,7 +1,6 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-#import <SDImageSVGNativeCoder.h>
 
 @implementation AppDelegate
 
@@ -11,8 +10,8 @@
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
-  SDImageSVGNativeCoder *SVGCoder = [SDImageSVGNativeCoder sharedCoder];
-  [[SDImageCodersManager sharedManager] addCoder:SVGCoder];
+//  SDImageSVGCoder *SVGCoder = [SDImageSVGCoder sharedCoder];
+//  [[SDImageCodersManager sharedManager] addCoder:SVGCoder];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }

@@ -6,3 +6,5 @@
 #import <React/RCTBridgeModule.h>
 #import "React/RCTViewManager.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import <SVGKit/SVGKit.h>
+#import <SVGKit/SVGKImage.h>
