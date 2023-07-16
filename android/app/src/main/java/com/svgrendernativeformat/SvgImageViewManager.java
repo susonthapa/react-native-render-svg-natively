@@ -10,7 +10,7 @@ public class SvgImageViewManager extends SimpleViewManager<SvgImageView> {
     @NonNull
     @Override
     public String getName() {
-        return "SvgImage";
+        return "SvgImageView";
     }
 
     @NonNull

@@ -21,7 +21,7 @@ type SvgImageViewProps = {
   style?: StyleProp<ViewStyle>;
 }
 
-const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImage'); 
+const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImageView'); 
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -40,14 +40,17 @@ function App(): JSX.Element {
       <SvgImageView imageUri={Image.resolveAssetSource(require('./test-svg-2.svg')).uri} style={{
         width: 100,
         height: 100,
+        backgroundColor: 'pink'
       }} />
       <SvgImageView imageUri={Image.resolveAssetSource(require('./test-svg.svg')).uri} style={{
         width: 100,
         height: 100,
+        backgroundColor: 'yellow'
       }} />
       <SvgImageView imageUri={Image.resolveAssetSource(require('./test-tube.svg')).uri} style={{
         width: 100,
         height: 100,
+        backgroundColor: 'gray'
       }} />
     </SafeAreaView>
   );
