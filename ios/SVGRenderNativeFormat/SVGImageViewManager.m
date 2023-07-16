@@ -9,5 +9,5 @@
 #import "React/RCTViewManager.h"
 
 @interface RCT_EXTERN_MODULE(SvgImageView, RCTViewManager)
-RCT_EXPORT_VIEW_PROPERTY(imageUri, NSString)
+RCT_EXPORT_VIEW_PROPERTY(param, NSDictionary)
 @end

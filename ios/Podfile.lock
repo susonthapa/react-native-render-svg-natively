@@ -416,16 +416,9 @@ PODS:
     - React-jsi (= 0.71.8)
     - React-logger (= 0.71.8)
     - React-perflogger (= 0.71.8)
-  - SDWebImage (5.16.0):
-    - SDWebImage/Core (= 5.16.0)
-  - SDWebImage/Core (5.16.0)
-  - SDWebImageSVGNativeCoder (0.1.1):
-    - SDWebImage (~> 5.10)
-    - svgnative (>= 0.1.0-beta)
   - SocketRocket (0.6.0)
   - SVGKit (3.1.0):
     - CocoaLumberjack (~> 3.0)
-  - svgnative (0.1.0-beta)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -489,7 +482,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - SDWebImageSVGNativeCoder
   - SVGKit (from `https://github.com/troZee/SVGKit.git`, branch `3.x`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -509,10 +501,7 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
-    - SDWebImage
-    - SDWebImageSVGNativeCoder
     - SocketRocket
-    - svgnative
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -641,14 +630,11 @@ SPEC CHECKSUMS:
   React-RCTVibration: 43ffd976a25f6057a7cf95ea3648ba4e00287f89
   React-runtimeexecutor: 7c51ae9d4b3e9608a2366e39ccaa606aa551b9ed
   ReactCommon: 85c98ab0a509e70bf5ee5d9715cf68dbf495b84c
-  SDWebImage: 2aea163b50bfcb569a2726b6a754c54a4506fcf6
-  SDWebImageSVGNativeCoder: dae205bb67b523328e5b87d6ff22d6c640e594c0
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SVGKit: 3c8468aab0026048532a3b27a0c81cdd939f0649
-  svgnative: 50a6b71a4e4c161f0352d888afe21e94affd3b42
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 43827409195b141df6ce7c43c09a958240fdda25
+PODFILE CHECKSUM: 8b8021762c129825b866f0b8a0787e70241235b9
 
 COCOAPODS: 1.12.1

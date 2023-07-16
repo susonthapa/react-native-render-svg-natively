@@ -29,17 +29,16 @@ class SVGImageView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  @objc var imageUri: String = "" {
+  @objc var param: [String: Any] = [:] {
     didSet {
-      let svgImage = SVGKImage(contentsOf: URL(string: imageUri))
+      let uri = param["uri"] as! String
+      let width = param["width"] as! Double
+      let height = param["height"] as! Double
+      let size = CGSize(width: width, height: height)
+      let svgImage = SVGKImage(contentsOf: URL(string: uri))
+      svgImage?.scaleToFit(inside: size)
       imageView.image = svgImage?.uiImage
       imageView.contentMode = .scaleAspectFit
-      
-//      SDWebImageManager.shared.loadImage(with: URL(string: imageUri), options: [], context: [.imageThumbnailPixelSize: CGSize(width: 100, height: 100)], progress: nil) { (image, _, _, _, _, _) in
-//        if let image = image {
-//          self.imageView.image = image
-//        }
-//      }
     }
   }
 }
