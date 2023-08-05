@@ -21,7 +21,7 @@ const SVGDemo = () => {
     <View>
       <Text>SVG Render on Native Side</Text>
       <SvgImageView param={{
-        uri: Image.resolveAssetSource(require('./assets/test-svg-2.svg')).uri,
+        uri: Image.resolveAssetSource(require('./assets/test-svg-2.xsvg')).uri,
         width: PixelRatio.getPixelSizeForLayoutSize(100),
         height: PixelRatio.getPixelSizeForLayoutSize(100),
       }} style={{
@@ -30,7 +30,7 @@ const SVGDemo = () => {
         backgroundColor: 'pink'
       }} />
       <SvgImageView param={{
-        uri: Image.resolveAssetSource(require('./assets/test-svg.svg')).uri,
+        uri: Image.resolveAssetSource(require('./assets/test-svg.xsvg')).uri,
         width: PixelRatio.getPixelSizeForLayoutSize(200),
         height: PixelRatio.getPixelSizeForLayoutSize(200),
       }} style={{
@@ -39,7 +39,7 @@ const SVGDemo = () => {
         backgroundColor: 'yellow'
       }} />
       <SvgImageView param={{
-        uri: Image.resolveAssetSource(require('./assets/test-tube.svg')).uri,
+        uri: Image.resolveAssetSource(require('./assets/test-tube.xsvg')).uri,
         width: PixelRatio.getPixelSizeForLayoutSize(150),
         height: PixelRatio.getPixelSizeForLayoutSize(150),
       }} style={{
