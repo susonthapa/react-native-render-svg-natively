@@ -18,7 +18,7 @@ class SvgImageView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
-    private var imageView: ImageView? = null
+    private lateinit var imageView: ImageView
 
     init {
         init(context)
@@ -29,10 +29,14 @@ class SvgImageView @JvmOverloads constructor(
         addView(imageView)
     }
 
+    fun setImageBitmap(bitmap: Bitmap) {
+        imageView.setImageBitmap(bitmap)
+    }
+
     fun setImage(path: String, width: Int, height: Int) {
         val target = object : CustomTarget<Bitmap>(width, height) {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                imageView!!.setImageBitmap(resource)
+                imageView.setImageBitmap(resource)
             }
 
             override fun onLoadCleared(placeholder: Drawable?) {}

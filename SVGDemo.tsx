@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  findNodeHandle,
   Image,
   PixelRatio,
   requireNativeComponent, StyleProp, Text, View, ViewStyle
 } from 'react-native';
+import SVGIcon from "./SVGIcon";
 
 type SvgImageViewProps = {
   param: {
@@ -11,12 +13,16 @@ type SvgImageViewProps = {
     width: number,
     height: number,
   }
+  nativeRef?: number | null,
   style?: StyleProp<ViewStyle>;
 }
 
 const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImageView');
 
 const SVGDemo = () => {
+
+  const [svgRef, setSvgRef] = useState<number | null>()
+
   return (
     <View>
       <Text>SVG Render on Native Side</Text>
@@ -46,7 +52,24 @@ const SVGDemo = () => {
         width: 150,
         height: 150,
         backgroundColor: 'gray'
-      }} />
+      }}
+        nativeRef={svgRef}
+      />
+
+      <Text>Native SVG Rendering</Text>
+      <View ref={(ref) => {
+        setTimeout(() => {
+          setSvgRef(findNodeHandle(ref))
+        }, 3000)
+      }} style={{
+        height: 150,
+        width: 150,
+      }}>
+        <SVGIcon viewBox="0 0 1024 1024" style={{
+          width: 150,
+          height: 150,
+        }} />
+      </View>
     </View>
   )
 }

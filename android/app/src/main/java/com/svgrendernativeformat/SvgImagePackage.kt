@@ -11,6 +11,6 @@ class SvgImagePackage : ReactPackage {
     }
 
     override fun createViewManagers(reactApplicationContext: ReactApplicationContext): List<ViewManager<*, *>> {
-        return listOf(SvgImageViewManager())
+        return listOf(SvgImageViewManager(reactApplicationContext))
     }
 }
