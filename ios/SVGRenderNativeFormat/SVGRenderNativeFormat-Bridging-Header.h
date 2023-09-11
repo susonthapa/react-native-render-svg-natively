@@ -7,3 +7,4 @@
 #import "React/RCTViewManager.h"
 #import <SVGKit/SVGKit.h>
 #import <SVGKit/SVGKImage.h>
+#import "RNSVGSvgView.h"
