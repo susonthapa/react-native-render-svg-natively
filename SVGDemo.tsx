@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  findNodeHandle,
   Image,
   PixelRatio,
   requireNativeComponent, StyleProp, Text, View, ViewStyle
 } from 'react-native';
-import SVGIcon from "./SVGIcon";
+import FlowerIcon from "./FlowerIcon";
 
 type SvgImageViewProps = {
-  param: {
+  param?: {
     uri: string,
     width: number,
     height: number,
   }
-  nativeRef?: number | null,
+  svgName?: string,
   style?: StyleProp<ViewStyle>;
 }
 
 const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImageView');
+const SvgRenderer = requireNativeComponent<{
+  svgProps: {
+    name: string,
+    width: number,
+    height: number,
+  }
+}>('SvgRenderer')
 
 const SVGDemo = () => {
-
-  const [svgRef, setSvgRef] = useState<number | null>()
 
   return (
     <View>
@@ -53,23 +57,39 @@ const SVGDemo = () => {
         height: 150,
         backgroundColor: 'gray'
       }}
-        nativeRef={svgRef}
       />
 
-      <Text>Native SVG Rendering</Text>
-      <View ref={(ref) => {
-        setTimeout(() => {
-          setSvgRef(findNodeHandle(ref))
-        }, 3000)
-      }} style={{
-        height: 150,
-        width: 150,
-      }}>
-        <SVGIcon viewBox="0 0 1024 1024" style={{
+      <Text>Off Screen rendering</Text>
+      <SvgRenderer
+        svgProps={{
+          name: 'flower-150-150',
+          width: PixelRatio.getPixelSizeForLayoutSize(150),
+          height: PixelRatio.getPixelSizeForLayoutSize(150),
+        }}
+        style={{
+          backgroundColor: 'pink',
+          width: 0,
+          height: 0,
+        }}
+      >
+        <FlowerIcon style={{
           width: 150,
           height: 150,
-        }} />
-      </View>
+        }} viewBox='0 0 1024 1024' />
+      </SvgRenderer>
+      <SvgImageView
+        svgName="flower-150-150"
+        style={{
+          width: 150,
+          height: 150,
+        }}
+      />
+
+      {/* <FlowerIcon style={{
+        width: 150,
+        height: 150,
+      }} viewBox='0 0 1024 1024' /> */}
+
     </View>
   )
 }
