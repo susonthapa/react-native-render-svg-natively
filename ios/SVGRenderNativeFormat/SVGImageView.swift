@@ -11,9 +11,11 @@ import UIKit
 class SVGImageView: UIView {
   
   private let imageView: UIImageView
+  private let bridge: RCTBridge
   
-  override init(frame: CGRect) {
+  init(frame: CGRect, bridge: RCTBridge) {
     self.imageView = .init(frame: frame)
+    self.bridge = bridge
     super.init(frame: frame)
     addSubview(imageView)
     self.imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,10 +37,21 @@ class SVGImageView: UIView {
       let width = param["width"] as! Double
       let height = param["height"] as! Double
       let size = CGSize(width: width, height: height)
-      let svgImage = SVGKImage(contentsOf: URL(string: uri))
-      svgImage?.scaleToFit(inside: size)
-      imageView.image = svgImage?.uiImage
-      imageView.contentMode = .scaleAspectFit
+//      let svgImage = SVGKImage(contentsOf: URL(string: uri))
+//      svgImage?.scaleToFit(inside: size)
+//      imageView.image = svgImage?.uiImage
+//      imageView.contentMode = .scaleAspectFit
+    }
+  }
+  
+  @objc var svgName: String? = nil {
+    didSet {
+      if let name = svgName, let viewManager = bridge.module(for: SvgRendererManager.self) as? SvgRendererManager {
+        viewManager.addRenderCallback(name) { it in
+          self.imageView.image = it
+          self.imageView.contentMode = .scaleAspectFit
+        }
+      }
     }
   }
 }

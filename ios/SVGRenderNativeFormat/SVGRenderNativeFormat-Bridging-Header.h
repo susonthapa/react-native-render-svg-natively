@@ -4,7 +4,7 @@
 //
 
 #import <React/RCTBridgeModule.h>
-#import "React/RCTViewManager.h"
-#import <SVGKit/SVGKit.h>
-#import <SVGKit/SVGKImage.h>
-#import "RNSVGSvgView.h"
+#import <React/RCTViewManager.h>
+#import <RNFSManager.h>
+#import <RNSVG/RNSVGUIKit.h>
+#import <RNSVG/RNSVGSvgView.h>

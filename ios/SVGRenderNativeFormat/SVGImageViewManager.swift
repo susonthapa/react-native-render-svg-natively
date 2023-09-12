@@ -15,6 +15,6 @@ class SVGImageViewManager: RCTViewManager {
   }
   
   override func view() -> UIView! {
-    return SVGImageView()
+    return SVGImageView(frame: .zero, bridge: bridge)
   }
 }

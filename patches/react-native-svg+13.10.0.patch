@@ -1,0 +1,37 @@
+diff --git a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/GroupView.java b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/GroupView.java
+index a17c1bd..5b4b4eb 100644
+--- a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/GroupView.java
++++ b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/GroupView.java
+@@ -24,7 +24,7 @@ import java.util.ArrayList;
+ import javax.annotation.Nullable;
+ 
+ @SuppressLint("ViewConstructor")
+-class GroupView extends RenderableView {
++public class GroupView extends RenderableView {
+   @Nullable ReadableMap mFont;
+   private GlyphContext mGlyphContext;
+ 
+diff --git a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/SvgView.java b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/SvgView.java
+index b49dce2..820632e 100644
+--- a/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/SvgView.java
++++ b/node_modules/react-native-svg/android/src/main/java/com/horcrux/svg/SvgView.java
+@@ -366,7 +366,18 @@ public class SvgView extends ReactViewGroup implements ReactCompoundView, ReactC
+     return Base64.encodeToString(bitmapBytes, Base64.DEFAULT);
+   }
+ 
+-  String toDataURL(int width, int height) {
++  public Bitmap renderToBitmap(int width, int height) {
++    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
++
++    clearChildCache();
++    drawChildren(new Canvas(bitmap));
++    clearChildCache();
++    this.invalidate();
++
++    return bitmap;
++  }
++
++  public String toDataURL(int width, int height) {
+     Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+ 
+     clearChildCache();

@@ -13,6 +13,7 @@ class SvgRenderer: UIView {
   var props: SvgProps? = nil
   
   private var dummyViewList: [UIView] = []
+  var delegate: SvgRendererProtocol? = nil
   
   @objc var svgProps: [String: Any]? = nil {
     didSet {
@@ -24,25 +25,37 @@ class SvgRenderer: UIView {
     }
   }
   
-  func getRenderedUIImage(_ child: UIView) {
-    if let view = child as? RNSVGSvgView {
-      return view.render(toUIImage: CGRect(x: 0, y: 0, width: props?.width!, height: props?.height!))
-    }
+  func getRenderedUIImage(_ child: RNSVGSvgView) -> UIImage? {
+    return child.render(asUIImage: .init(x: 0, y: 0, width: .init(integerLiteral: props!.width), height: .init(integerLiteral: props!.height)))
+  }
+  
+  override func addSubview(_ view: UIView) {
+    // no-op
   }
   
   // MARK: - React Children
   override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
     dummyViewList.insert(subview, at: atIndex)
+    if let view = subview as? RNSVGSvgView, let props = props {
+      delegate?.onInsertView(self, view, props)
+    }
   }
   
   override func removeReactSubview(_ subview: UIView!) {
-    dummyViewList.remove(at: dummyViewList.firstIndex(of: subview)!)
+    if let props = props {
+      delegate?.onRemoveView(props)
+      dummyViewList.remove(at: dummyViewList.firstIndex(of: subview)!)
+    }
+  }
+  
+  override func willMove(toSuperview newSuperview: UIView?) {
+    if newSuperview == nil {
+      delegate = nil
+    }
   }
   
   override func reactSubviews() -> [UIView]! {
     return dummyViewList
   }
-  
-  
   
 }

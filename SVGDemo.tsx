@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   Image,
   PixelRatio,
   requireNativeComponent, StyleProp, Text, View, ViewStyle
 } from 'react-native';
+import ReactTestRenderer from "react-test-renderer";
+import { Path, Svg } from "react-native-svg";
 import FlowerIcon from "./FlowerIcon";
 
 type SvgImageViewProps = {
@@ -26,6 +28,26 @@ const SvgRenderer = requireNativeComponent<{
 }>('SvgRenderer')
 
 const SVGDemo = () => {
+
+  // useEffect(() => {
+  //   console.log(`TODO: FlowerIcon`, JSON.stringify(ReactTestRenderer.create(
+  //     <FlowerIcon style={{
+  //       width: 150,
+  //       height: 150,
+  //     }} color='red' stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
+  //   ).toJSON()));
+
+
+  // }, [])
+
+  const svgJson = useMemo(() => (
+    ReactTestRenderer.create(
+      <FlowerIcon style={{
+        width: 150,
+        height: 150,
+      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
+    ).toJSON()
+  ), [])
 
   return (
     <View>
@@ -71,24 +93,25 @@ const SVGDemo = () => {
           width: 0,
           height: 0,
         }}
+        svgComponent={svgJson}
       >
         <FlowerIcon style={{
           width: 150,
           height: 150,
-        }} viewBox='0 0 1024 1024' />
+        }} color='red' stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
       </SvgRenderer>
-      <SvgImageView
+      {/* <SvgImageView
         svgName="flower-150-150"
         style={{
           width: 150,
           height: 150,
         }}
-      />
+      /> */}
 
-      {/* <FlowerIcon style={{
+      <FlowerIcon style={{
         width: 150,
         height: 150,
-      }} viewBox='0 0 1024 1024' /> */}
+      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
 
     </View>
   )
