@@ -26,7 +26,7 @@ class SvgRenderer: UIView {
   }
   
   func getRenderedUIImage(_ child: RNSVGSvgView) -> UIImage? {
-    return child.render(asUIImage: .init(x: 0, y: 0, width: .init(integerLiteral: props!.width), height: .init(integerLiteral: props!.height)))
+    return child.render(toUIImage: .init(x: 0, y: 0, width: .init(integerLiteral: props!.width), height: .init(integerLiteral: props!.height)))
   }
   
   override func addSubview(_ view: UIView) {
