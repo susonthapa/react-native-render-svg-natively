@@ -45,7 +45,7 @@ const SVGDemo = () => {
       <FlowerIcon style={{
         width: 150,
         height: 150,
-      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
+      }} />
     ).toJSON()
   ), [])
 
@@ -82,36 +82,18 @@ const SVGDemo = () => {
       />
 
       <Text>Off Screen rendering</Text>
-      <SvgRenderer
-        svgProps={{
-          name: 'flower-150-150',
-          width: PixelRatio.getPixelSizeForLayoutSize(150),
-          height: PixelRatio.getPixelSizeForLayoutSize(150),
-        }}
-        style={{
-          backgroundColor: 'pink',
-          width: 0,
-          height: 0,
-        }}
+      <SvgImageView
         svgComponent={svgJson}
-      >
-        <FlowerIcon style={{
-          width: 150,
-          height: 150,
-        }} color='red' stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
-      </SvgRenderer>
-      {/* <SvgImageView
-        svgName="flower-150-150"
         style={{
           width: 150,
           height: 150,
         }}
-      /> */}
+      />
 
-      <FlowerIcon style={{
+      {/* <FlowerIcon style={{
         width: 150,
         height: 150,
-      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' />
+      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' /> */}
 
     </View>
   )

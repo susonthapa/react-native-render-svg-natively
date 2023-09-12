@@ -12,6 +12,8 @@ import com.facebook.react.uimanager.UIManagerHelper
 import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.views.view.ReactViewGroup
+import com.svgrendernativeformat.svg.ReactSvgRenderer
+import com.svgrendernativeformat.svg.SvgRenderer
 import com.svgrendernativeformat.svg.SvgRendererManager
 
 class SvgImageViewManager(private val reactContext: ReactContext) :
@@ -45,5 +47,12 @@ class SvgImageViewManager(private val reactContext: ReactContext) :
                 }
             }
         }
+    }
+
+    @ReactProp(name = "svgComponent")
+    fun setSvgComponent(view: SvgImageView, props: ReadableMap) {
+        val renderer = ReactSvgRenderer(view.context as ThemedReactContext, props)
+        val bitmap = renderer.renderToBitmap()
+        view.setImageBitmap(bitmap)
     }
 }

@@ -106,7 +106,7 @@ class SvgRendererManager(private val reactContext: ReactContext) : ViewGroupMana
     @ReactProp(name = "svgComponent")
     fun setSvgComponent(view: SvgRenderer, props: ReadableMap) {
         val renderer = ReactSvgRenderer(view.context as ThemedReactContext, props)
-        renderer.renderToBitmap()
+        val bitmap = renderer.renderToBitmap()
     }
 
     @ReactProp(name = "svgProps")
@@ -131,9 +131,13 @@ class SvgRendererManager(private val reactContext: ReactContext) : ViewGroupMana
 
     private fun renderView(parent: SvgRenderer, props: SvgProps, child: View) {
         val bitmap = parent.getRenderedBitmap(child) ?: return
-        bitmapCache[props.name] = bitmap
-        renderCallbacks[props.name]?.forEach { it.invoke(bitmap) }
-        renderCallbacks.remove(props.name)
+        cacheBitmap(bitmap, props.name)
+    }
+
+    private fun cacheBitmap(bitmap: Bitmap, name: String) {
+        bitmapCache[name] = bitmap
+        renderCallbacks[name]?.forEach { it.invoke(bitmap) }
+        renderCallbacks.remove(name)
     }
 
     override fun removeViewAt(parent: SvgRenderer, index: Int) {

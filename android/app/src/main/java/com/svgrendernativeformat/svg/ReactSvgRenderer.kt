@@ -1,5 +1,6 @@
 package com.svgrendernativeformat.svg
 
+import android.graphics.Bitmap
 import android.view.View
 import android.view.ViewGroup
 import com.facebook.react.bridge.ReadableMap
@@ -12,9 +13,9 @@ import com.horcrux.svg.SvgView
 class ReactSvgRenderer(private val context: ThemedReactContext, private val input: ReadableMap) {
 
 
-    fun renderToBitmap() {
+    fun renderToBitmap(): Bitmap {
         val rootView = renderChildView(null, input) as SvgView
-        rootView.renderToBitmap(413, 413)
+        return rootView.renderToBitmap(413, 413)
     }
 
     private fun renderChildView(parent: View?, childProps: ReadableMap): View {
