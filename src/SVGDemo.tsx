@@ -7,18 +7,9 @@ import {
 import ReactTestRenderer from "react-test-renderer";
 import { Path, Svg } from "react-native-svg";
 import FlowerIcon from "./FlowerIcon";
+import { SvgImageView } from "./SvgImageView";
 
-type SvgImageViewProps = {
-  param?: {
-    uri: string,
-    width: number,
-    height: number,
-  }
-  svgName?: string,
-  style?: StyleProp<ViewStyle>;
-}
 
-const SvgImageView = requireNativeComponent<SvgImageViewProps>('SvgImageView');
 const SvgRenderer = requireNativeComponent<{
   svgProps: {
     name: string,
@@ -87,7 +78,7 @@ const SVGDemo = () => {
         }}
       />
 
-      <FlowerIcon width={150} height={150}/>
+      <FlowerIcon width={150} height={150} />
 
     </View>
   )

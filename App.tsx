@@ -13,7 +13,7 @@ import {
 import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
-import SVGDemo from './SVGDemo';
+import SVGPerformance from './src/SVGPerformance';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,7 +28,7 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <SVGDemo />
+      <SVGPerformance />
     </SafeAreaView>
   );
 }

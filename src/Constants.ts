@@ -1,0 +1,1 @@
+export const MAX_SVG_COUNT = 1000
