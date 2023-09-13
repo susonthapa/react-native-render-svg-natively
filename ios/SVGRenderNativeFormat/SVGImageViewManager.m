@@ -11,6 +11,7 @@
 @interface RCT_EXTERN_MODULE(SvgImageView, RCTViewManager)
 RCT_EXPORT_VIEW_PROPERTY(param, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(svgName, NSString)
+RCT_EXPORT_VIEW_PROPERTY(svgComponent, NSDictionary)
 @end
 
 @interface RCT_EXTERN_MODULE(SvgRenderer, RCTViewManager)
