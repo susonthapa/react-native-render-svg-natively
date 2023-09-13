@@ -17,6 +17,7 @@
 		E03F9AC92AAEFA2600AF5FFD /* SvgProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F9AC82AAEFA2600AF5FFD /* SvgProps.swift */; };
 		E03F9ACB2AAEFA2D00AF5FFD /* SvgRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F9ACA2AAEFA2D00AF5FFD /* SvgRenderer.swift */; };
 		E03F9ACD2AAEFA3600AF5FFD /* SvgRendererManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F9ACC2AAEFA3600AF5FFD /* SvgRendererManager.swift */; };
+		E06402072AB173D000C64F1D /* ReactSvgRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06402062AB173D000C64F1D /* ReactSvgRenderer.swift */; };
 		E0FEB85C2A602135003F9673 /* SVGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEB85B2A602135003F9673 /* SVGImageView.swift */; };
 		E0FEB85F2A60221E003F9673 /* SVGImageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FEB85E2A60221E003F9673 /* SVGImageViewManager.swift */; };
 		E0FEB8612A60232D003F9673 /* SVGImageViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FEB8602A60232D003F9673 /* SVGImageViewManager.m */; };
@@ -52,6 +53,7 @@
 		E03F9AC82AAEFA2600AF5FFD /* SvgProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgProps.swift; sourceTree = "<group>"; };
 		E03F9ACA2AAEFA2D00AF5FFD /* SvgRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgRenderer.swift; sourceTree = "<group>"; };
 		E03F9ACC2AAEFA3600AF5FFD /* SvgRendererManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SvgRendererManager.swift; sourceTree = "<group>"; };
+		E06402062AB173D000C64F1D /* ReactSvgRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactSvgRenderer.swift; sourceTree = "<group>"; };
 		E0FEB85B2A602135003F9673 /* SVGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SVGImageView.swift; path = SVGRenderNativeFormat/SVGImageView.swift; sourceTree = "<group>"; };
 		E0FEB85D2A60216C003F9673 /* SVGRenderNativeFormat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVGRenderNativeFormat-Bridging-Header.h"; path = "SVGRenderNativeFormat/SVGRenderNativeFormat-Bridging-Header.h"; sourceTree = "<group>"; };
 		E0FEB85E2A60221E003F9673 /* SVGImageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SVGImageViewManager.swift; path = SVGRenderNativeFormat/SVGImageViewManager.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E03F9AC82AAEFA2600AF5FFD /* SvgProps.swift */,
+				E06402062AB173D000C64F1D /* ReactSvgRenderer.swift */,
 				E03F9ACA2AAEFA2D00AF5FFD /* SvgRenderer.swift */,
 				E03F9ACC2AAEFA3600AF5FFD /* SvgRendererManager.swift */,
 			);
@@ -444,6 +447,7 @@
 				E0FEB8612A60232D003F9673 /* SVGImageViewManager.m in Sources */,
 				E0FEB85F2A60221E003F9673 /* SVGImageViewManager.swift in Sources */,
 				E03F9AC92AAEFA2600AF5FFD /* SvgProps.swift in Sources */,
+				E06402072AB173D000C64F1D /* ReactSvgRenderer.swift in Sources */,
 				E0FEB85C2A602135003F9673 /* SVGImageView.swift in Sources */,
 				E03F9ACD2AAEFA3600AF5FFD /* SvgRendererManager.swift in Sources */,
 				E03F9ACB2AAEFA2D00AF5FFD /* SvgRenderer.swift in Sources */,
