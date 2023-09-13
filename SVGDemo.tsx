@@ -42,10 +42,7 @@ const SVGDemo = () => {
 
   const svgJson = useMemo(() => (
     ReactTestRenderer.create(
-      <FlowerIcon style={{
-        width: 150,
-        height: 150,
-      }} />
+      <FlowerIcon width={PixelRatio.getPixelSizeForLayoutSize(150)} height={PixelRatio.getPixelSizeForLayoutSize(150)} />
     ).toJSON()
   ), [])
 
@@ -90,10 +87,7 @@ const SVGDemo = () => {
         }}
       />
 
-      {/* <FlowerIcon style={{
-        width: 150,
-        height: 150,
-      }} stroke={'pink'} fill='white' strokeWidth={5.0} viewBox='0 0 1024 1024' /> */}
+      <FlowerIcon width={150} height={150}/>
 
     </View>
   )

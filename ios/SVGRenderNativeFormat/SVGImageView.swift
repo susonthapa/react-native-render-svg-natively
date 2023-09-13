@@ -58,7 +58,7 @@ class SVGImageView: UIView {
   @objc var svgComponent: [String: Any]? = nil {
     didSet {
       if let props = svgComponent {
-        let uiImage = ReactSvgRenderer(bridge, props).renderToUIImage()
+        let uiImage = ReactSvgRenderer(bridge, props).renderToImage()
         self.imageView.image = uiImage
         self.imageView.contentMode = .scaleAspectFit
       }

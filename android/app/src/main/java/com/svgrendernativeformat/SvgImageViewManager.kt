@@ -1,19 +1,12 @@
 package com.svgrendernativeformat
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.util.Log
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.UIManager
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerHelper
 import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.annotations.ReactProp
-import com.facebook.react.views.view.ReactViewGroup
 import com.svgrendernativeformat.svg.ReactSvgRenderer
-import com.svgrendernativeformat.svg.SvgRenderer
 import com.svgrendernativeformat.svg.SvgRendererManager
 
 class SvgImageViewManager(private val reactContext: ReactContext) :
@@ -52,7 +45,7 @@ class SvgImageViewManager(private val reactContext: ReactContext) :
     @ReactProp(name = "svgComponent")
     fun setSvgComponent(view: SvgImageView, props: ReadableMap) {
         val renderer = ReactSvgRenderer(view.context as ThemedReactContext, props)
-        val bitmap = renderer.renderToBitmap()
+        val bitmap = renderer.renderToImage()
         view.setImageBitmap(bitmap)
     }
 }

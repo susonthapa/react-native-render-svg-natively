@@ -22,33 +22,26 @@ class ReactSvgRenderer {
     componentDataByName = bridge.uiManager.value(forKey: NSString(utf8String: ivar_getName(ivarLayout!)!)! as String) as! [AnyHashable: Any]
   }
   
-  func renderToUIImage() -> UIImage {
+  func renderToImage() -> UIImage {
     let rootView = renderChildView(nil, input) as! RNSVGSvgView
     return rootView.render(toUIImage: .init(x: 0, y: 0, width: 413, height: 413))
   }
   
-  private func renderChildView(_ parent: UIView?, _ childProps: [String: Any]) -> UIView {
-    let type = childProps["type"] as! String
-    
-    let props = childProps["props"] as! [String: Any]
-    let view = createView(type, props)
+  private func renderChildView(_ parent: UIView?, _ props: [String: Any]) -> UIView {
+    let type = props["type"] as! String
+    let view = createView(type, props["props"] as! [String: Any])
     parent?.addSubview(view)
     
-    let children = childProps["children"] as? [Any]
+    let children = props["children"] as? [Any]
     if children?.isEmpty ?? true {
       return view
     }
     
     for i in 0..<children!.count {
-      let tempProp = children![i]
-      renderChildView(view, tempProp as! [String: Any])
+      renderChildView(view, children?[i] as! [String: Any])
     }
     
     return view
-  }
-  
-  private func getViewManager(_ name: String) -> RCTViewManager {
-    return bridge.uiManager.moduleRegistry.module(forName: "\(name)Manager") as! RCTViewManager
   }
   
   private func createView(_ name: String, _ props: [String: Any]) -> UIView {

@@ -5,8 +5,6 @@ import android.view.View
 import com.facebook.react.bridge.ColorPropConverter
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.ReadableNativeMap
-import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeArray
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.uimanager.ReactStylesDiffMap
@@ -106,7 +104,7 @@ class SvgRendererManager(private val reactContext: ReactContext) : ViewGroupMana
     @ReactProp(name = "svgComponent")
     fun setSvgComponent(view: SvgRenderer, props: ReadableMap) {
         val renderer = ReactSvgRenderer(view.context as ThemedReactContext, props)
-        val bitmap = renderer.renderToBitmap()
+        val bitmap = renderer.renderToImage()
     }
 
     @ReactProp(name = "svgProps")

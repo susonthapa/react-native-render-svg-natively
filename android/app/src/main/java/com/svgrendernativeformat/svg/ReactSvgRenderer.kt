@@ -7,43 +7,39 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ReactStylesDiffMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerModule
-import com.facebook.react.uimanager.ViewManager
 import com.horcrux.svg.SvgView
 
 class ReactSvgRenderer(private val context: ThemedReactContext, private val input: ReadableMap) {
 
-
-    fun renderToBitmap(): Bitmap {
+    fun renderToImage(): Bitmap {
         val rootView = renderChildView(null, input) as SvgView
-        return rootView.renderToBitmap(413, 413)
+        val width = input.getMap("props")!!.getDouble("width").toInt()
+        val height = input.getMap("props")!!.getDouble("height").toInt()
+        return rootView.renderToBitmap(width, height)
     }
 
-    private fun renderChildView(parent: View?, childProps: ReadableMap): View {
-        val type = childProps.getString("type")!!
-        val manager = getViewManager(type)
+    private fun renderChildView(parent: View?, props: ReadableMap): View {
+        val type = props.getString("type")!!
+        val view = createView(type, props.getMap("props")!!)
+        (parent as? ViewGroup)?.addView(view)
 
-        val props = ReactStylesDiffMap(childProps.getMap("props")!!)
-        val view = manager.createView(View.generateViewId(), context, props, null, null)
-        if (parent != null && parent is ViewGroup) {
-            parent.addView(view)
-        }
-
-        val children = childProps.getArray("children")
+        val children = props.getArray("children")
         if (children == null || children.size() == 0) {
             return view
         }
 
         for (i in 0 until children.size()) {
-            val tempProp = children.getMap(i)
-            renderChildView(view, tempProp)
+            renderChildView(view, children.getMap(i))
         }
 
         return view
     }
 
-    private fun getViewManager(name: String): ViewManager<*, *> {
+    private fun createView(name: String, props: ReadableMap): View {
+        val reactProps = ReactStylesDiffMap(props)
         return context.getNativeModule(UIManagerModule::class.java)!!
             .viewManagerRegistry_DO_NOT_USE.get(name)!!
+            .createView(View.generateViewId(), context, reactProps, null, null)
     }
 
 }
